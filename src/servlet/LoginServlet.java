@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.DAO;
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -27,20 +29,20 @@ public class LoginServlet extends HttpServlet {
 		String errorMessage;
 //		リクエスト変数のログインID、パスワードを使ってログイン処理
 //		ログインできた場合、セッション変数に、そのログインIDのUserBeanのインスタンスを格納
-		if(DAO.login() == 0) {
+		if(DAO.login(request.getParameter("loginId"),request.getParameter("password")) == 0) {
 //			ログインできた場合
 //			セッションの取得
 			HttpSession session = request.getSession();
 //			セッション変数に格納
-			session.setAttribute("user",DAO.createUserBeanInstance(request.getAttribute("loginId")));
+			session.setAttribute("user",DAO.createUserBeanInstance(request.getParameter("loginId")));
 //			遷移先URLに遷移先を格納
 			url = "main.jsp";
-		}else if(DAO.login() == 1) {
+		}else if(DAO.login(request.getParameter("loginId"),request.getParameter("password")) == 1) {
 //			DBにユーザ、パスワードの組み合わせがない場合
 			errorMessage = "登録されたユーザーが存在しません";
 //			遷移先URLに遷移先を格納
 			url = "login.jsp";
-		}else if(DAO.login() == 2) {
+		}else if(DAO.login(request.getParameter("loginId"),request.getParameter("password")) == 2) {
 //			すでにユーザーがログイン中の場合
 			errorMessage = "すでにログイン中です。";
 //			遷移先URLに遷移先を格納

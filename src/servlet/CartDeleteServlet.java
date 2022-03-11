@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans.UserBean;
+import dao.DAO;
+
 public class CartDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -20,8 +23,9 @@ public class CartDeleteServlet extends HttpServlet {
 //		セッション生成
 		HttpSession session = request.getSession();
 //		セッション変数を取得
+		UserBean user = (UserBean)session.getAttribute("user");
 //		カート削除処理を実行
-		DAO.deleteCart(session.getAttribute("user").userId);
+		DAO.deleteCart(user.getloginId());
 
 //		カート画面に遷移
 		RequestDispatcher rd = request.getRequestDispatcher("CartServlet");
