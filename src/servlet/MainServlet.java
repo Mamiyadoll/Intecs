@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans.UserBean;
+import dao.DAO;
+
 /**
  * Servlet implementation class MainServlet
  */
@@ -24,10 +27,12 @@ public class MainServlet extends HttpServlet {
 		String url;
 //		セッション生成
 		HttpSession session = request.getSession();
+//		セッション変数からユーザIDを取得
+		UserBean user = (UserBean)session.getAttribute("user");
 //		セッション変数が存在するかどうか確認
 		if(session.getAttribute("userId") != null) {
 //			おすすめ本をリクエスト変数に格納
-			request.setAttribute("reccomend", DAO.reccomend(request.getAttribute("user")));
+			request.setAttribute("reccomend", DAO.recommend(user.getloginId()));
 //			遷移先URLを格納
 			url = "main.jsp";
 		}else {

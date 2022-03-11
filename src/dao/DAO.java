@@ -156,44 +156,44 @@ public class DAO {
 
 
 //	商品検索メソッド
-	public static List<ProductBean> searchProduct(String searchWord) {
-		Connection con = null;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		List<ProductBean> addList = new ArrayList<ProductBean>();
-		List<ProductBean> returnList = new ArrayList<ProductBean>();
-		List<String> wordList = new ArrayList<String>();
-
-		try {
-//			引数の検索文字列を空白で区切ってListに格納する
-
-
-//			データ取得する
-			con =  accessDB();
-			String sql = "SELECT * FROM product WHERE productName LIKE %?%";
-			ps = con.prepareStatement(sql);
-			ps.setString(1, 変数名);
-			rs = ps.executeQuery();
-
-//			取得データ格納用の変数を宣言する
-
-			while(rs.next()) {
-				rs.getString();
-			}
-
-//			インスタンス生成（Listに格納）
-
-		}catch(Exception e) {
-			System.err.println(e.getMessage());
-		} finally {
-			try {
-				closeDB(con, ps, rs);
-			} catch (Exception e) {
-				System.err.println(e.getMessage());
-			}
-		}
-		return returnList;
-	}
+//	public static List<ProductBean> searchProduct(String searchWord) {
+//		Connection con = null;
+//		PreparedStatement ps = null;
+//		ResultSet rs = null;
+//		List<ProductBean> addList = new ArrayList<ProductBean>();
+//		List<ProductBean> returnList = new ArrayList<ProductBean>();
+//		List<String> wordList = new ArrayList<String>();
+//
+//		try {
+////			引数の検索文字列を空白で区切ってListに格納する
+//
+//
+////			データ取得する
+//			con =  accessDB();
+//			String sql = "SELECT * FROM product WHERE productName LIKE %?%";
+//			ps = con.prepareStatement(sql);
+//			ps.setString(1, 変数名);
+//			rs = ps.executeQuery();
+//
+////			取得データ格納用の変数を宣言する
+//
+//			while(rs.next()) {
+//				rs.getString();
+//			}
+//
+////			インスタンス生成（Listに格納）
+//
+//		}catch(Exception e) {
+//			System.err.println(e.getMessage());
+//		} finally {
+//			try {
+//				closeDB(con, ps, rs);
+//			} catch (Exception e) {
+//				System.err.println(e.getMessage());
+//			}
+//		}
+//		return returnList;
+//	}
 
 
 //	ログインメソッド
@@ -482,6 +482,141 @@ public class DAO {
 			}
 		}
 		return delete;
+	}
+
+	public static List<ProductBean> recommend(String loginId) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+//		戻り値宣言
+		List<ProductBean> list = new ArrayList<ProductBean>();
+
+		try {
+//			データ取得
+			con =  accessDB();
+			String sql = "SELECT history.isbn,productName,productNameKana,price,genre,authorName,authorNam eKana,SUM(quantity) FROM product INNER JOIN history ON product.isbn = history.isbn WHERE genre = (SELECT genre FROM product INNER JOIN history ON product.isbn = history.isbn GROUP BY genre ORDER BY SUM(quantity) DESC LIMIT 1) && loginId = ? GROUP BY isbn ORDER BY SUM(quantity) DESC LIMIT 3";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, loginId);
+			rs = ps.executeQuery();
+
+//			取得データ格納変数宣言
+
+			//カーソルを最後に持っていく
+			rs.last();
+
+			if(rs.getRow() != 3) {
+				String sql2 = "SELECT history.isbn,productName,productNameKana,price,genre,authorName,authorNam eKana,SUM(quantity) FROM product INNER JOIN history ON product.isbn = history.isbn GROUP BY isbn ORDER BY SUM(quantity) DESC LIMIT 3";
+				ps = con.prepareStatement(sql2);
+				ps.setString(1, loginId);
+				rs = ps.executeQuery();
+			}
+//			//カーソルを最初に戻す
+			rs.beforeFirst();
+
+			//取得データを変数に格納
+			String isbn;
+			String productName;
+			String productNameKana;
+			int price;
+			String genre;
+			String authorName;
+			String authorNameKana;
+
+			while(rs.next()) {
+				isbn = rs.getString("isbn");
+				productName = rs.getString("productName");
+				productNameKana = rs.getString("productNameKana");
+				price = rs.getInt("price");
+				genre = rs.getString("genre");
+				authorName = rs.getString("authorName");
+				authorNameKana = rs.getString("authorNameKana");
+
+//			インスタンス生成	、戻り値のListに追加
+				ProductBean ProductBean = new ProductBean(
+						isbn,
+						productName,
+						productNameKana,
+						price,
+						genre,
+						authorName,
+					    authorNameKana, authorNameKana
+						);
+				list.add(ProductBean);
+			}
+
+
+		}catch(Exception e) {
+			return null;
+		} finally {
+			try {
+				closeDB(con, ps, rs);
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
+			}
+		}
+		return list;
+	}
+
+//	購入確定
+	public static boolean purchase(String loginId) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			con =  accessDB();
+			String sql = "SELECT * FROM cart WHERE loginId = ?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, loginId);
+			rs = ps.executeQuery();
+
+//		取得データ格納変数宣言
+			List<CartBean> list = new ArrayList<CartBean>();
+
+//		cartテーブルのデータからCartBeanインスタンス生成
+//		不要データはnullか0を一時的に格納
+//		生成したインスタンスをlistに格納
+			while(rs.next()) {
+				CartBean cb = new CartBean(
+						rs.getString("isbn"),
+						null,
+						null,
+						0,
+						0,
+						rs.getInt("quantity")
+						);
+				list.add(cb);
+			}
+
+//		listのデータをhistoryテーブルに格納
+//		listの大きさ分だけinsertする
+			for(CartBean cb1 : list) {
+				sql = "INSERT INTO history VALUES(?,?,?)";
+				ps = con.prepareStatement(sql);
+				ps.setString(1, loginId);
+				ps.setString(2, cb1.getIsbn());
+				ps.setInt(3, cb1.getQuantity());
+
+				ps.executeUpdate();
+			}
+
+//			cartテーブルの、ログイン中ユーザのユーザIDを持つレコードを削除
+			sql = "DELETE FROM cart WHERE loginId = ?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, loginId);
+			ps.executeUpdate();
+
+			return true;
+
+		}catch(Exception e) {
+			return false;
+		} finally {
+			try {
+				closeDB(con, ps, rs);
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
+			}
+		}
 	}
 
 
