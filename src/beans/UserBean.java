@@ -32,7 +32,7 @@ public class UserBean implements Serializable {
 	}
 
 	//メソッド
-	public String getIsbn() {
+	public String getloginId() {
 		return loginId;
 	}
 
