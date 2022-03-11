@@ -316,6 +316,82 @@ public class DAO {
 
 
 
+	//recommendメソッド
+
+	public static List<ProductBean> recommend(String loginId) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+//		戻り値宣言
+		List<ProductBean> list = new ArrayList<ProductBean>();
+
+		try {
+//			データ取得
+			con =  accessDB();
+			String sql = "SELECT history.isbn,productName,productNameKana,price,genre,authorName,authorNam eKana,SUM(quantity) FROM product INNER JOIN history ON product.isbn = history.isbn WHERE genre = (SELECT genre FROM product INNER JOIN history ON product.isbn = history.isbn GROUP BY genre ORDER BY SUM(quantity) DESC LIMIT 1) && loginId = ? GROUP BY isbn ORDER BY SUM(quantity) DESC LIMIT 3";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, loginId);
+			rs = ps.executeQuery();
+
+//			取得データ格納変数宣言
+
+			//カーソルを最後に持っていく
+			rs.last();
+
+			if(rs.getRow() != 3) {
+				String sql2 = "SELECT history.isbn,productName,productNameKana,price,genre,authorName,authorNam eKana,SUM(quantity) FROM product INNER JOIN history ON product.isbn = history.isbn GROUP BY isbn ORDER BY SUM(quantity) DESC LIMIT 3";
+				ps = con.prepareStatement(sql2);
+				ps.setString(1, loginId);
+				rs = ps.executeQuery();
+			}
+//			//カーソルを最初に戻す
+			rs.beforeFirst();
+
+			//取得データを変数に格納
+			String isbn;
+			String productName;
+			String productNameKana;
+			int price;
+			String genre;
+			String authorName;
+			String authorNameKana;
+
+			while(rs.next()) {
+				isbn = rs.getString("isbn");
+				productName = rs.getString("productName");
+				productNameKana = rs.getString("productNameKana");
+				price = rs.getInt("price");
+				genre = rs.getString("genre");
+				authorName = rs.getString("authorName");
+				authorNameKana = rs.getString("authorNameKana");
+
+//			インスタンス生成	、戻り値のListに追加
+				ProductBean ProductBean = new ProductBean(
+						isbn,
+						productName,
+						productNameKana,
+						price,
+						genre,
+						authorName,
+					    authorNameKana, authorNameKana
+						);
+				list.add(ProductBean);
+			}
+
+
+		}catch(Exception e) {
+			return null;
+		} finally {
+			try {
+				closeDB(con, ps, rs);
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
+			}
+		}
+		return list;
+	}
+
+
 
 
 
