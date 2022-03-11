@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import beans.CartBean;
 import beans.ProductBean;
 import beans.UserBean;
 
@@ -389,6 +390,68 @@ public class DAO {
 			}
 		}
 		return list;
+	}
+
+//	購入確定
+	public static boolean purchase(String loginId) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			con =  accessDB();
+			String sql = "SELECT * FROM cart WHERE loginId = ?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, loginId);
+			rs = ps.executeQuery();
+
+//		取得データ格納変数宣言
+			List<CartBean> list = new ArrayList<CartBean>();
+
+//		cartテーブルのデータからCartBeanインスタンス生成
+//		不要データはnullか0を一時的に格納
+//		生成したインスタンスをlistに格納
+			while(rs.next()) {
+				CartBean cb = new CartBean(
+						rs.getString("isbn"),
+						null,
+						null,
+						0,
+						0,
+						rs.getInt("quantity")
+						);
+				list.add(cb);
+			}
+
+//		listのデータをhistoryテーブルに格納
+//		listの大きさ分だけinsertする
+			for(CartBean cb1 : list) {
+				sql = "INSERT INTO history VALUES(?,?,?)";
+				ps = con.prepareStatement(sql);
+				ps.setString(1, loginId);
+				ps.setString(2, cb1.getIsbn());
+				ps.setInt(3, cb1.getQuantity());
+
+				ps.executeUpdate();
+			}
+
+//			cartテーブルの、ログイン中ユーザのユーザIDを持つレコードを削除
+			sql = "DELETE FROM cart WHERE loginId = ?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, loginId);
+			ps.executeUpdate();
+
+			return true;
+
+		}catch(Exception e) {
+			return false;
+		} finally {
+			try {
+				closeDB(con, ps, rs);
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
+			}
+		}
 	}
 
 
