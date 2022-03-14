@@ -12,7 +12,7 @@
 <%@ include file="header.jsp"%>
 <h1 class="logo">Cart</h1>
 <hr>
-<c:forEach items="${product}" var="u" varStatus="s">
+<c:forEach items="${cart}" var="u" varStatus="s">
 <div class="purchaseImg">
 <img src="${pageContext.request.contextPath}/productImg/${u.isbn}.jpg">
 </div>
@@ -20,17 +20,17 @@
 <p>${u.productName}</p>
 </div>
 <div class="purchaseAuthor">
-<p>${u.author}</p>
+<p>${u.authorName}</p>
 </div>
 <div class="quantity">
-<p>数量：${cart.quantity}</p>
+<p>数量：${u.quantity}</p>
 </div>
 <div class="productPrice">
-<p>価格：${u.productPrice}</p>
+<p>価格：${u.price}</p>
 </div>
 </c:forEach>
 <div class="totalPrice">
-<p>合計：${u.totalPrice}円</p>
+<p>合計：${totalPrice}円</p>
 </div>
 <hr>
 <div class="button-position">
