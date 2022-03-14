@@ -33,7 +33,7 @@ public class SearchServlet extends HttpServlet {
 //			戻り値を、リクエスト変数にセット
 			request.setAttribute("searchResult", DAO.searchProduct(request.getParameter("searchWords")));
 //			取得したリストの大きさを取得し、リクエスト変数にセット
-			request.setAttribute("number",DAO.searchProduct(request.getParameter("searchWords").size()));
+			request.setAttribute("number",DAO.searchProduct(request.getParameter("searchWords")).size());
 		}
 
 //		ページ遷移

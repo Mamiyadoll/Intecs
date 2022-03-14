@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import beans.CartBean;
@@ -155,45 +156,86 @@ public class DAO {
 	}
 
 
-//	商品検索メソッド
-//	public static List<ProductBean> searchProduct(String searchWord) {
-//		Connection con = null;
-//		PreparedStatement ps = null;
-//		ResultSet rs = null;
-//		List<ProductBean> addList = new ArrayList<ProductBean>();
-//		List<ProductBean> returnList = new ArrayList<ProductBean>();
-//		List<String> wordList = new ArrayList<String>();
-//
-//		try {
-////			引数の検索文字列を空白で区切ってListに格納する
-//
-//
-////			データ取得する
-//			con =  accessDB();
-//			String sql = "SELECT * FROM product WHERE productName LIKE %?%";
-//			ps = con.prepareStatement(sql);
-//			ps.setString(1, 変数名);
-//			rs = ps.executeQuery();
-//
-////			取得データ格納用の変数を宣言する
-//
-//			while(rs.next()) {
-//				rs.getString();
-//			}
-//
-////			インスタンス生成（Listに格納）
-//
-//		}catch(Exception e) {
-//			System.err.println(e.getMessage());
-//		} finally {
-//			try {
-//				closeDB(con, ps, rs);
-//			} catch (Exception e) {
-//				System.err.println(e.getMessage());
-//			}
-//		}
-//		return returnList;
-//	}
+	public static List<ProductBean> searchProduct(String searchWord) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+//		検索結果をどんどん格納するList
+		List<ProductBean> addList = new ArrayList<ProductBean>();
+//		addListから重複するレコードを排除した戻り値用のList
+		List<ProductBean> returnList = new ArrayList<ProductBean>();
+//		引数の検索文字列を空白で区切って単語ごとに格納したList
+		List<String> wordList = new ArrayList<String>();
+//		検索する対象のカラム名を格納したList
+		String[] columnList = {"productName","productNameKana","authorName","authorNameKana","keyword"};
+
+		try {
+
+//			引数の検索文字列を空白で区切ってwordListに格納する
+			wordList = Arrays.asList(searchWord.replaceAll("　", " ").trim().split(" +"));
+
+//			DB接続
+			con =  accessDB();
+
+//			columnListの各カラムを対象に、wordListの単語に曖昧一致するレコードを検索し、データを取得する
+			for(String column : columnList) {
+				for(String word : wordList) {
+
+					String sql = "SELECT * FROM product WHERE ? LIKE %?%";
+					ps = con.prepareStatement(sql);
+					ps.setString(1, column);
+					ps.setString(2, word);
+					rs = ps.executeQuery();
+
+//					取得データの分だけProductBeanのインスタンス生成し、addListにどんどんaddする
+					while(rs.next()) {
+						ProductBean productBean = new ProductBean(
+								rs.getString("isbn"),
+								rs.getString("productName"),
+								rs.getString("productNameKana"),
+								rs.getInt("price"),
+								rs.getString("genre"),
+								rs.getString("authorName"),
+								rs.getString("authorNameKana"),
+								rs.getString("keyword")
+								);
+
+						addList.add(productBean);
+					}
+				}
+			}
+
+//			addListの各レコードについて、returnListに同じ値があるかを確認し、
+//			同じ値がなければaddListのレコードをreturnListに格納する
+//			（boolean b をフラグとして用いる）
+
+			for(int i = 0 ; i < addList.size() ; i++) {
+				boolean b = true;
+
+				for(int j = 0 ; j < returnList.size() && b ; j++) {
+					if(addList.get(i).equals(returnList.get(j))) {
+						b = false;
+						}
+					}
+
+				if(b) {
+					returnList.add(addList.get(i));
+					}
+
+				}
+
+		}catch(Exception e) {
+			System.err.println(e.getMessage());
+		} finally {
+			try {
+				closeDB(con, ps, rs);
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
+			}
+		}
+		return returnList;
+	}
 
 
 //	ログインメソッド
@@ -214,7 +256,7 @@ public class DAO {
 			rs = ps.executeQuery();
 
 //			ログインIDとパスワードの組み合わせに一致するユーザーがいればログインフラグをみる、
-//			いなければiに１（ID、パスの組み合わせが間違っていることを表す）を代入
+//			ユーザーがいなければiに１（ID、パスの組み合わせが間違っていることを表す）を代入
 			if(rs.next()) {
 				int loginFlg = -1;
 				loginFlg = rs.getInt("loginFlg");

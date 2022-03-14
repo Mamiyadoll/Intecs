@@ -27,8 +27,10 @@ public class LoginServlet extends HttpServlet {
 		String url ;
 //		エラーメッセージ格納用の変数の宣言
 		String errorMessage;
+
 //		リクエスト変数のログインID、パスワードを使ってログイン処理
 //		ログインできた場合、セッション変数に、そのログインIDのUserBeanのインスタンスを格納
+
 		if(DAO.login(request.getParameter("loginId"),request.getParameter("password")) == 0) {
 //			ログインできた場合
 //			セッションの取得
@@ -37,17 +39,25 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("user",DAO.createUserBeanInstance(request.getParameter("loginId")));
 //			遷移先URLに遷移先を格納
 			url = "main.jsp";
+
 		}else if(DAO.login(request.getParameter("loginId"),request.getParameter("password")) == 1) {
 //			DBにユーザ、パスワードの組み合わせがない場合
 			errorMessage = "登録されたユーザーが存在しません";
+			request.setAttribute("errorMessage", errorMessage);
 //			遷移先URLに遷移先を格納
 			url = "login.jsp";
+
 		}else if(DAO.login(request.getParameter("loginId"),request.getParameter("password")) == 2) {
 //			すでにユーザーがログイン中の場合
 			errorMessage = "すでにログイン中です。";
+			request.setAttribute("errorMessage", errorMessage);
 //			遷移先URLに遷移先を格納
 			url = "login.jsp";
+
 		}else {
+//			それ以外のエラー
+			errorMessage = "予期せぬエラーが発生しました。。";
+			request.setAttribute("errorMessage", errorMessage);
 			url = "login.jsp";
 		}
 		RequestDispatcher rd  = request.getRequestDispatcher(url);
