@@ -1,0 +1,15 @@
+body{
+    background-color: gray;
+    max-width: 100%;
+}
+
+.h2{
+	display : inline;
+	text-aline : center;
+}
+.logout{
+	position: relative 0px 10px;
+}
+.form{
+	padding:5px;
+}

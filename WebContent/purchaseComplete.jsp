@@ -6,6 +6,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h1>ご注文ありがとうございました。</h1>
+<a href="index.jsp ">
+	<button type="button" class="button">TOPへ</button>
+</a>
 </body>
 </html>
