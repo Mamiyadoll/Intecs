@@ -1,0 +1,95 @@
+span.jp-headline-adjust {
+	margin-right: -0.45em;
+}
+
+@media only screen and (min-width: 735px) and (max-width: 1068px) {
+	span.jp-headline-adjust.medium-reject {
+		margin-right: 0;
+	}
+}
+
+@media only screen and (max-width: 734px) {
+	span.jp-headline-adjust.small-reject {
+		margin-right: 0;
+	}
+}
+
+@media only screen and (max-width: 1068px) {
+	span.jp-headline-adjust-medium {
+		margin-right: -0.45em;
+	}
+}
+
+@media only screen and (max-width: 734px) {
+	span.jp-headline-adjust-small {
+		margin-right: -0.45em;
+	}
+}
+
+@media only screen and (max-width: 357px) {
+	span.jp-headline-adjust-xsmall {
+		margin-right: -0.45em;
+	}
+}
+
+/* Individual Headline Adjustment */
+/* iPhone SE Copy */
+@media only screen and (min-width: 735px) and (max-width: 1068px) {
+	.jp-iphone-se-subhead-adjust {
+		margin-right: -0.6em;
+	}
+}
+@media only screen and (max-width: 734px) {
+	.jp-iphone-se-subhead-adjust-small {
+		margin-right: -0.5em;
+	}
+}
+
+/* iPad Air subhead width */
+.tile-ipad-air .section-content .copy-container .subhead {
+	width: 90%;
+}
+@media only screen and (max-width: 1068px) {
+	.tile-ipad-air .section-content .copy-container .subhead {
+		width: 100%;
+	}
+}
+
+/* [L] iPhone13 Tile Vertical layout adjustment */
+@media only screen and (min-width: 1441px) {
+	.tile-iphone-13 .copy-container {
+		margin: 282.3px 0;
+	}
+}
+
+/* [L] Studio Display width adjust */
+@media only screen and (min-width: 1069px) and (max-width: 1440px) {
+	.tile-studio .copy-container.container-studio-display .subhead {
+		width: 100%;
+	}
+}
+
+/* Tile studio Headline kerning Adjust */
+.tile-studio .headline {
+	font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
+		sans-serif;
+	letter-spacing: -0.012em;
+}
+
+@media only screen and (max-width: 1068px) {
+	.tile-studio .headline {
+		line-height: 1.0714285714;
+		letter-spacing: -0.005em;
+	}
+}
+
+@media only screen and (max-width: 734px) {
+	.tile-studio .headline {
+		line-height: 1.1;
+		letter-spacing: 0;
+	}
+}
+
+.tile-studio .copy-container.container-mac-studio .subhead {
+	width: 100%;
+}

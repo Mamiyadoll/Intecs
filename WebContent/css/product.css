@@ -1,0 +1,11 @@
+@charset "UTF-8";
+/* 検索結果表示用 */
+.wrapper{
+	display: flex;
+	flex-wrap: wrap; /* 折返し指定 */
+	gap: 5px;
+}
+
+.product{
+	width: 24%;
+}
