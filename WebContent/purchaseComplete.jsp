@@ -3,7 +3,7 @@
 <html lang="jp">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>購入完了</title>
 </head>
 <body>
 <h1>ご注文ありがとうございました。</h1>

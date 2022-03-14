@@ -3,7 +3,7 @@
 <html lang="jp">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>新規会員登録</title>
 </head>
 <body>
 <h1>新規会員登録</h1>
