@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="jp">
@@ -7,6 +7,8 @@
 <title>Free | オンラインストア</title>
 </head>
 <body>
+<%@ include file="header.jsp"%>
+<br><br><br><br>
 	<%
 		if (request.getAttribute("errorMessage") != null) {
 			out.print(request.getAttribute("errorMessage"));
@@ -20,5 +22,7 @@
 		<input type="submit" value="ログイン">
 	</form>
 	<button onclick="location.href='signup.jsp'">新規登録</button>
+<br><br><br><br>
+<%@ include file="footer.jsp"%>
 </body>
 </html>
