@@ -9,7 +9,7 @@
 <h1>新規会員登録</h1>
 <hr>
 <div class="txt">
-<form action="PurchaseServlet" method="post">
+<form action="signupConfirm.jsp" method="post">
 <h3>ユーザ名(英数字)</h3>
 <input type="text" name="loginId" id="loginId" maxlength="50" placeholder="半角英数8文字以上">
 <h3>Password</h3>

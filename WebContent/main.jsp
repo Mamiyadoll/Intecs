@@ -25,40 +25,37 @@
 
 				<ul class="newbooks-box">
 			        <li>
-			        <p id="book-title">
-			        <a href="BookDetailServlet?isbn=${recomend[0].isbn}"><img src="${recomend[0]isbn}"></a></p>
-			        <p id="book-title"><a href="BookDetailServlet?isbn=${newBooks[0].isbn}">${recomend[0].bookname}</a></p>
-					<p>${recomend[0].authorName}</p>
-					<form action="CartServlet" method="get">
-			            <input type="hidden" name="isbn" value="${recomend[0].isbn}">
-			            <!--<input type="hidden" name="isbn" value=isbn>-->
-			            <input type="hidden" name="count" value="1">
-			            <input type="submit" class="cart-btn" value="カートに入れる">
-					</form>
+				        <p id="book-title"><img src="${product[0].isbn}"></p>
+				        <p id="book-title">${product[0].productName}</p>
+						<p>${product[0].authorName}</p>
+							<form action="CartAddServlet" method="post">
+					            <input type="hidden" name="isbn" value="${product[0].isbn}">
+					            <!--<input type="hidden" name="isbn" value=isbn>-->
+					            <input type="hidden" name="count" value="1">
+					            <input type="submit" class="cart-btn" value="カートに入れる">
+							</form>
 			        </li>
 					<li>
-					<p id="book-title">
-					<a href="BookDetailServlet?isbn=${recomend[1].isbn}"><img src="${recomend[1]isbn}"></a></p>
-					<p id="book-title"><a href="BookDetailServlet?isbn=${recomend[1].isbn}">${recomend[1].bookname}</a></p>
-					<p>${recomend[1].authorName}</p>
-					<form action="CartServlet" method="get">
-			            <input type="hidden" name="isbn" value="${recomend[1].isbn}">
-			            <!--<input type="hidden" name="isbn" value=isbn>-->
-			            <input type="hidden" name="count" value="1">
-			            <input type="submit" class="cart-btn" value="カートに入れる">
-					</form>
+						<p id="book-title"><img src="${product[1].isbn}"></p>
+						<p id="book-title">${product[1].productName}</p>
+						<p>${product[1].authorName}</p>
+							<form action="CartAddServlet" method="post">
+					            <input type="hidden" name="isbn" value="${product[1].isbn}">
+					            <!--<input type="hidden" name="isbn" value=isbn>-->
+					            <input type="hidden" name="count" value="1">
+					            <input type="submit" class="cart-btn" value="カートに入れる">
+							</form>
 					</li>
 					<li>
-					<p id="book-title">
-					<a href="BookDetailServlet?isbn=${recomend[2].isbn}"><img src="${recomend[2]isbn}"></a></p>
-					<p id="book-title"><a href="BookDetailServlet?isbn=${recomend[2].isbn}">${recomend[2].bookname}</a></p>
-					<p>${recomend[2].authorName}</p>
-					<form action="CartServlet" method="get">
-			            <input type="hidden" name="isbn" value="${recomend[2].isbn}">
-			            <!--<input type="hidden" name="isbn" value=isbn>-->
-			            <input type="hidden" name="count" value="1">
-			            <input type="submit" class="cart-btn" value="カートに入れる">
-					</form>
+						<p id="book-title"><img src="${product[2].isbn}"></p>
+						<p id="book-title">${product[2].productName}</p>
+						<p>${product[2].authorName}</p>
+							<form action="CartAddServlet" method="post">
+					            <input type="hidden" name="isbn" value="${product[2].isbn}">
+					            <!--<input type="hidden" name="isbn" value=isbn>-->
+					            <input type="hidden" name="count" value="1">
+					            <input type="submit" class="cart-btn" value="カートに入れる">
+							</form>
 					</li>
 				</ul>
 			</div>
