@@ -20,7 +20,7 @@ public class CartDeleteServlet extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		セッション生成
+//		セッション取得
 		HttpSession session = request.getSession();
 //		セッション変数を取得
 		UserBean user = (UserBean)session.getAttribute("user");

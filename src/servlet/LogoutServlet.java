@@ -31,6 +31,9 @@ public class LogoutServlet extends HttpServlet {
 //		ログアウト処理
 		DAO.logout(user.getloginId());
 
+//		セッション破棄
+		session.invalidate();
+
 		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 		rd.forward(request, response);
 	}

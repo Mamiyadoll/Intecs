@@ -30,9 +30,9 @@ public class MainServlet extends HttpServlet {
 //		セッション変数からユーザIDを取得
 		UserBean user = (UserBean)session.getAttribute("user");
 //		セッション変数が存在するかどうか確認
-		if(session.getAttribute("userId") != null) {
+		if(user.getloginId() != null) {
 //			おすすめ本をリクエスト変数に格納
-			request.setAttribute("reccomend", DAO.recommend(user.getloginId()));
+			request.setAttribute("product", DAO.recommend(user.getloginId()));
 //			遷移先URLを格納
 			url = "main.jsp";
 		}else {

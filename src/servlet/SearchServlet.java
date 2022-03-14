@@ -22,18 +22,20 @@ public class SearchServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 //		リクエスト変数の検索文字列が空文字かどうか判定
-		if(request.getParameter("searchWords") == "") {
-			request.setAttribute("searchResult",DAO.showProduct() );
+		if(request.getParameter("keyword") == "") {
+//			空文字の場合は商品全件取得する
+			request.setAttribute("product",DAO.showProduct() );
 //			商品一覧の大きさを取得し、リクエスト変数にセット
 			request.setAttribute("number",DAO.showProduct().size());
 		}else {
 //			検索文字列を使って、検索処理
 //			戻り値を、リクエスト変数にセット
-			request.setAttribute("searchResult", DAO.searchProduct(request.getParameter("searchWords")));
+			request.setAttribute("product", DAO.searchProduct(request.getParameter("keyword")));
 //			取得したリストの大きさを取得し、リクエスト変数にセット
-			request.setAttribute("number",DAO.searchProduct(request.getParameter("searchWords")).size());
+			request.setAttribute("number",DAO.searchProduct(request.getParameter("keyword")).size());
+//			検索文字列をリクエスト属性にセット
+			request.setAttribute("keyword", request.getParameter("keyword"));
 		}
 
 //		ページ遷移
