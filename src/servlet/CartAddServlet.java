@@ -29,7 +29,8 @@ public class CartAddServlet extends HttpServlet {
 				user.getloginId(),
 				request.getParameter("isbn"),
 //		☆☆要確認　購入個数はパラメータで送る。。。？☆☆
-				Integer.parseInt(request.getParameter("count")));
+				Integer.parseInt(request.getParameter("count"))
+				);
 
 //		ページ遷移
 		RequestDispatcher rd = request.getRequestDispatcher("result.jsp");

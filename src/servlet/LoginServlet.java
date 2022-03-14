@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 //			セッション変数に格納
 			session.setAttribute("user",DAO.createUserBeanInstance(request.getParameter("loginId")));
 //			遷移先URLに遷移先を格納
-			url = "main.jsp";
+			url = "MainServlet";
 
 		}else if(DAO.login(request.getParameter("loginId"),request.getParameter("password")) == 1) {
 //			DBにユーザ、パスワードの組み合わせがない場合
@@ -60,6 +60,7 @@ public class LoginServlet extends HttpServlet {
 			request.setAttribute("errorMessage", errorMessage);
 			url = "login.jsp";
 		}
+
 		RequestDispatcher rd  = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
