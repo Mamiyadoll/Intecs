@@ -5,12 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>カート</title>
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="files/main.css">
 <script src="${pageContext.request.contextPath}/js/library.js"></script>
 </head>
 <body>
-<%@ include file="header.jsp"%>
-<h1 class="logo">Cart</h1>
+<h2 class="logo">Cart</h2>
 <hr>
 <c:forEach items="${product}" var="u" varStatus="s">
 <div class="purchaseImg">
