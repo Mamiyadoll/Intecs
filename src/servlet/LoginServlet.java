@@ -22,6 +22,11 @@ public class LoginServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+    protected void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException {
+//    	indexにリダイレクト
+    	response.sendRedirect("index.jsp");
+    }
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		遷移先URL格納用の変数の宣言
 		String url ;

@@ -22,6 +22,11 @@ public class LogoutServlet extends HttpServlet {
         super();
     }
 
+    protected void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException {
+//    	indexにリダイレクト
+    	response.sendRedirect("index.jsp");
+    }
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		セッション生成
 		HttpSession session = request.getSession();
