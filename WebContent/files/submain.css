@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+.search {
+	margin-top: 69px;
+	text-align: center;
+	line-height: 43px;
+	height:43px;
+	border-bottom: 1px solid black;
+}
+
+.newbooks{
+	margin: 50px 0;
+}
+.newbooks-box{
+
+	display: flex;
+	justify-content: center;
+
+}
+.newbooks-box li{
+	display: inline-block;
+    list-style-type: none;
+    position: relative;
+    margin: 5px 30px;
+
+}
+.newbooks-box img{
+	display: inline-block;
+	height:350px;
+}
