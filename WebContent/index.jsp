@@ -12,8 +12,8 @@
 
 <body>
 
-	<main> <img src="img/img_mens_illustration@2x.png" width="30%"
-		height="30%">
+	<main> <img src="img/img_mens_illustration@2x.png" width="20%"
+		height="20%">
 	<h1>
 		もっとNICEな買い物を。&nbsp;<br>もっとNICEなときめきを。
 		<wbr>

@@ -33,7 +33,7 @@
 		<ul class="newbooks-box">
 			<li>
 				<p id="book-title">
-					<img src="${product[0].isbn}">
+					<img src="${pageContext.request.contextPath}/productImg/${product[0].isbn}.jpg">
 				</p>
 				<p id="book-title">${product[0].productName}</p><br>
 				<p>${product[0].authorName}</p>
@@ -52,11 +52,12 @@
 			</li>
 			<li>
 				<p id="book-title">
-					<img src="${product[1].isbn}">
+					<img src="${pageContext.request.contextPath}/productImg/${product[1].isbn}.jpg">
 				</p>
 
 				<p id="book-title">${product[1].productName}</p><br>
 				<p>${product[1].authorName}</p>
+
 				<form action="CartAddServlet" method="post">
 						<input type="hidden" name="isbn" value="${produc[1].isbn}">
 					数量
@@ -73,7 +74,7 @@
 			</li>
 			<li>
 				<p id="book-title">
-					<img src="${product[2].isbn}">
+					<img src="${pageContext.request.contextPath}/productImg/${product[2].isbn}.jpg">
 				</p>
 				<p id="book-title">${product[2].productName}</p><br>
 				<p>${product[2].authorName}</p>
