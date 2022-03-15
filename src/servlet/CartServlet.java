@@ -22,6 +22,11 @@ public class CartServlet extends HttpServlet {
         super();
     }
 
+    protected void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException {
+//    	indexにリダイレクト
+    	response.sendRedirect("index.jsp");
+    }
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		セッション取得
 		HttpSession session = request.getSession();
