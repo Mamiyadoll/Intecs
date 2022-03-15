@@ -8,23 +8,33 @@
 <link rel="stylesheet" href="files/main.css">
 </head>
 
-<%@ include file="header.jsp"%>
 <body>
-	<h2>会員ログイン</h2>
+	<div class="wrapper">
+		<header>
+		<div class="header__inner">
+			<h1>
+				<a href="main.jsp"><img src="img/logo.svg" alt="株式会社インテックス "></a>
+			</h1>
+		</div>
+	</header>
+		<h2 class="headline">会員ログイン</h2>
 
-	<%
-		if (request.getAttribute("errorMessage") != null) {
-			out.print(request.getAttribute("errorMessage"));
-		}
-	%>
+		<%
+			if (request.getAttribute("errorMessage") != null) {
+				out.print(request.getAttribute("errorMessage"));
+			}
+		%>
 
-	<form action="LoginServlet" method="post">
-		<input type="text" name="loginId" placeholder="ログインID"><br>
-		<input type="password" name="password" placeholder="パスワード"><br>
-		<input type="submit" value="ログイン">
-	</form>
-	<button onclick="location.href='signup.jsp'" class="button">新規登録</button>
+		<form action="LoginServlet" method="post">
+			<input type="text" name="loginId" placeholder="ログインID"><br>
+			<input type="password" name="password" placeholder="パスワード"><br>
+			<input type="submit" value="ログイン" class="button">
+		</form>
+		<button onclick="location.href='signup.jsp'" class="button">新規登録</button>
+
+		<%@ include file="footer.jsp"%>
+	</div>
 </body>
-<%@ include file="footer.jsp"%>
+
 
 </html>

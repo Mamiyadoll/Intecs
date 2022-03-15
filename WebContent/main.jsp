@@ -32,7 +32,7 @@
 					            <input type="hidden" name="isbn" value="${product[0].isbn}">
 					            <!--<input type="hidden" name="isbn" value=isbn>-->
 					            <input type="hidden" name="count" value="1">
-					            <input type="submit" class="cart-btn" value="カートに入れる">
+					            <input type="submit" class="button" value="カートに入れる">
 							</form>
 			        </li>
 					<li>
@@ -43,7 +43,7 @@
 					            <input type="hidden" name="isbn" value="${product[1].isbn}">
 					            <!--<input type="hidden" name="isbn" value=isbn>-->
 					            <input type="hidden" name="count" value="1">
-					            <input type="submit" class="cart-btn" value="カートに入れる">
+					            <input type="submit" class="button" value="カートに入れる">
 							</form>
 					</li>
 					<li>
@@ -54,7 +54,7 @@
 					            <input type="hidden" name="isbn" value="${product[2].isbn}">
 					            <!--<input type="hidden" name="isbn" value=isbn>-->
 					            <input type="hidden" name="count" value="1">
-					            <input type="submit" class="cart-btn" value="カートに入れる">
+					            <input type="submit" class="button" value="カートに入れる">
 							</form>
 					</li>
 				</ul>
