@@ -1,0 +1,42 @@
+@charset "UTF-8";
+.sreach-result{
+	margin: 50px 0;
+}
+.book-box{
+	display: flex;
+	margin: 0 200px;
+	justify-content: center;
+
+}
+.book-img img{
+	width: 15vw;
+	margin-right: 20px;
+	margin-top: 50px;
+}
+
+.book-text{
+	margin: 100px 10px;
+	flex-grow: 3;
+}
+.book-img{
+	flex-grow: 2;
+
+}
+
+#subtitle{
+	margin:0;
+	font-size: 2em;
+}
+
+.cart-inset-btn input{
+	width: 100%;
+
+}
+.cart-inset-btn button{
+	width: 100%;
+
+}
+
+#cart-btn{
+	height:3em;
+}
