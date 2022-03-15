@@ -8,12 +8,12 @@
     <link rel="stylesheet" type="text/css" href="./files/style.css">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
-
+<br><br>
 <body>
     <header class="scroll-header">
         <div class="header__inner">
             <h1>
-                <a href="https://intecs.ne.jp/ "><img src="img/logo.svg" alt="株式会社インテックス "></a>
+                <a href="main.jsp"><img src="img/logo.svg" alt="株式会社インテックス "></a>
             </h1>
             <div class="header__nav-toggle ">
                 <div><span></span><span></span><span></span></div>
