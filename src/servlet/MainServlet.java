@@ -22,6 +22,11 @@ public class MainServlet extends HttpServlet {
         super();
     }
 
+    protected void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException {
+//    	indexにリダイレクト
+    	response.sendRedirect("index.jsp");
+    }
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		遷移先URL格納用の変数を宣言
 		String url;
