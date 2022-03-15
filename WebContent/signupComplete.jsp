@@ -8,7 +8,7 @@
 <body>
 <h1>新規登録が完了しました。</h1>
 <h1>引き続きお買い物をお楽しみください</h1>
-<a href="index.jsp ">
+<a href="main.jsp ">
 	<button type="button" class="button">TOPへ</button>
 </a>
 </body>

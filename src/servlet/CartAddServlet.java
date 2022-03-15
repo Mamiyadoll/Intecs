@@ -28,7 +28,6 @@ public class CartAddServlet extends HttpServlet {
 		DAO.addCart(
 				user.getloginId(),
 				request.getParameter("isbn"),
-//		☆☆要確認　購入個数はパラメータで送る。。。？☆☆
 				Integer.parseInt(request.getParameter("count"))
 				);
 

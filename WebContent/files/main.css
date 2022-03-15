@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+html {
+    font-family:  "ヒラギノ角ゴ ProN W3", HiraKakuProN-W3, 游ゴシック, "Yu Gothic", メイリオ, Meiryo, Verdana, Helvetica, Arial, sans-serif;
+    background-color: black;
+}
+
+* {
+    margin: 0 0 0 0;
+}
+
+html * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto 0 auto;
+    background-color: white;
+    position: relative;
+    border-radius: 18px;
+    max-width: 90%;
+}
+
+h2{
+    text-align: center;
+    font-size: 25px;
+	margin-left: 10px;
+	margin-top: 20px;
+}
+
+p {
+	width: 100%;
+	color: black;
+}
+
+.button{
+    margin: 20px 0 20px 27px;
+    display: inline-block;
+    border-radius: 20px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px 35px;
+    background: rgba(0, 0, 102, 0.92);
+    color: white;
+    line-height: 1em;
+    transition: .3s;
+    border: 2px solid rgba(0, 0, 102, 0.92);
+    text-decoration: none;
+}
+
+.button:hover{
+    color: rgba(0, 0, 102, 0.92);
+    background: white;
+}
