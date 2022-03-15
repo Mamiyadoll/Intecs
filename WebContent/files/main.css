@@ -14,30 +14,56 @@ html * {
 }
 
 body {
-    margin: 0 auto 0 auto;
-    background-color: white;
+    margin: 0 0 0 0;
+    background-color: black;
     position: relative;
+}
+
+.scroll-header{
+	margin-bottom: 50px;
+
+	}
+
+.wrapper{
+	text-align: center;
+	padding-top: 20px;
+    margin: 20px auto 0 auto;
+    background-color: white;
     border-radius: 18px;
     max-width: 95%;
 }
 
-h2{
-    text-align: center;
-    font-size: 25px;
-	margin-left: 10px;
+/* 見出し */
+.headline{
+    font-size: 32px;
 	margin-top: 20px;
+	font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro','メイリオ', 'Meiryo', '游ゴシック', 'Yu Gothic', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 }
 
 p {
 	width: 100%;
 	color: black;
+	font-size: 15px;
+	font-weight: bolder;
+}
+
+.button-position{
+    display: flex;
+    align-items: center;
+
+}
+
+.button-center{
+    display: flex;
+	margin: 0 auto;
 }
 
 .button{
+	width: 145px;
     margin: 20px 0 20px 27px;
     display: inline-block;
     border-radius: 20px;
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
     cursor: pointer;
     padding: 10px 35px;
@@ -52,4 +78,26 @@ p {
 .button:hover{
     color: rgba(0, 0, 102, 0.92);
     background: white;
+}
+
+a:link {
+	color: #003a8f;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #003a8f;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #003a8f;
+	text-decoration: none;
+	/* 透明度 */
+	opacity: 0.7;
+}
+
+a:active {
+	color: rgba(0, 0, 102, 0.92);
+	text-decoration: none;
 }
