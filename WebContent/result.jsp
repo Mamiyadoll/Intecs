@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html;charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ page import="beans.ProductBean" import="beans.UserBean"
@@ -11,11 +11,12 @@
 
 <meta charset="UTF-8">
 <title>検索結果 | Intecsオンラインストア</title>
+
 </head>
 
 <%@include file="header.jsp"%>
 <body>
-
+	<div class="wrapper">
 	検索結果：${requestScope.number}件
 	<hr>
 
@@ -52,10 +53,8 @@
 		</div>
 	</div>
 	<hr>
-	<%
-		}
-	%>
 
 
+	</div>
 </body>
 </html>
