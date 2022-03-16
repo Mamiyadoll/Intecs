@@ -32,7 +32,6 @@
 		</form>
 		<button onclick="location.href='signup.jsp'" class="button">新規登録</button>
 
-		<%@ include file="footer.jsp"%>
 	</div>
 </body>
 
