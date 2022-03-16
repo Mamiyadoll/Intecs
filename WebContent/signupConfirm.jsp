@@ -39,12 +39,12 @@
 		<form action="SignUpServlet" method="post">
 
 			<h3>ユーザ名(英数字)</h3>
-			<p>
+
 				<%
 					out.println(loginId);
 				%>
-				<input type="hidden" name="loginId" value="<%=loginId%>">
-			</p>
+
+			<input type="hidden" name="loginId" value="<%=loginId%>">
 			<input type="hidden" name="password" value="<%=pass%>">
 
 			<h3>氏名</h3>
