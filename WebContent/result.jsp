@@ -20,19 +20,18 @@
 <body>
 
 	<%
-			if (request.getAttribute("errorMessage") != "") {
-				out.print(request.getAttribute("errorMessage"));
-			}
-		%>
+		if (request.getAttribute("errorMessage") != "") {
+			out.print(request.getAttribute("errorMessage"));
+		}
+	%>
 	<div class="wrapper">
-		検索キーワード:${requestScope.keyword} に一致する商品
-		検索結果：${requestScope.number}件
+		検索キーワード:${requestScope.keyword} に一致する商品 検索結果：${requestScope.number}件
 		<hr>
 
 		<%
-		List<ProductBean> product = (List<ProductBean>) request.getAttribute("product");
-		for (ProductBean item : product) {
-	%>
+			List<ProductBean> product = (List<ProductBean>) request.getAttribute("product");
+			for (ProductBean item : product) {
+		%>
 		<div class="book-box">
 			<div class="book-img">
 				<img
@@ -62,6 +61,9 @@
 			</div>
 		</div>
 		<hr>
+		<%
+			}
+		%>
 
 
 	</div>

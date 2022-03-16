@@ -20,9 +20,9 @@ public class DAO {
 		Connection con = null;
 		String drivername = "com.mysql.cj.jdbc.Driver";
 		Class.forName(drivername);
-		String url = "jdbc:mysql://localhost:3306/freeDB?characterEncodeing=utf-8&serverTimezone=JST";
-		String username = "root";
-		String password = "";
+		String url = "jdbc:mysql://192/168.202.29:3306/freeDB?characterEncodeing=utf-8&serverTimezone=JST";
+		String username = "freeusers";
+		String password = "Freep@ssw0rd";
 		con = DriverManager.getConnection(url, username, password);
 		return con;
 	}
