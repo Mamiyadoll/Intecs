@@ -182,10 +182,10 @@ public class DAO {
 			for(String column : columnList) {
 				for(String word : wordList) {
 
-					String sql = "SELECT * FROM product WHERE ? LIKE %?%";
+					String sql = "SELECT * FROM product WHERE ? LIKE ?";
 					ps = con.prepareStatement(sql);
 					ps.setString(1, column);
-					ps.setString(2, word);
+					ps.setString(2, '%'+word+'%');
 					rs = ps.executeQuery();
 
 //					取得データの分だけProductBeanのインスタンス生成し、addListにどんどんaddする
@@ -267,9 +267,9 @@ public class DAO {
 				if(loginFlg == 1) {
 					i = 2;
 				}else {
-					String sql2 = "UPDATE user SET loginFlg = 1 WHERE loginId = ? AND password = ?";
+					String sql2 = "UPDATE user SET loginFlg = 1 WHERE loginId = ?";
+					ps = con.prepareStatement(sql2);
 					ps.setString(1,id);
-					ps.setString(2, pass);
 					ret = ps.executeUpdate();
 					if(ret != 0) {
 						i = 0;
