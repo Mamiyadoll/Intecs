@@ -38,8 +38,8 @@ main {
 .copyright {
 	color: darkgray;
 	margin-right: 30px;
-	float: left;
 	margin-top: 5px;
+	text-align: center;
 }
 
 .button {
@@ -54,7 +54,7 @@ main {
 	color: white;
 	line-height: 1em;
 	transition: .3s;
-	border: 2px solid rgba(0, 0, 102, 0.92);
+	border: 2px solid black;
 	text-decoration: none;
 }
 
