@@ -19,12 +19,9 @@ public class CartAddServlet extends HttpServlet {
         super();
     }
 
-    protected void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException {
-//    	indexにリダイレクト
-    	response.sendRedirect("index.jsp");
-    }
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		遷移先URLの用意
+		String url = "";
 //		セッション取得
 		HttpSession session = request.getSession();
 //		セッションからuserインスタンスを取得
@@ -36,8 +33,15 @@ public class CartAddServlet extends HttpServlet {
 				Integer.parseInt(request.getParameter("count"))
 				);
 
+//		遷移元によって遷移先変更
+		if(request.getParameter("page") == "result") {
+			url = "result.jsp";
+		} else if(request.getParameter("page") == "main") {
+			url = "main.jsp";
+		}
+
 //		ページ遷移
-		RequestDispatcher rd = request.getRequestDispatcher("result.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 
 	}
