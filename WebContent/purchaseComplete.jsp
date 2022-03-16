@@ -7,18 +7,26 @@
 <title>購入完了 | Intecs オンラインストア</title>
 <link rel="stylesheet" href="css/main.css">
 </head>
-<%@ include file="header.jsp"%>
+
 <body>
 	<div class="wrapper">
+
+	<%@ include file="header.jsp"%>
+
+		<p id="err_chk" style=" color: red;">
 		<%
 			if (request.getAttribute("errorMessage") != "") {
 				out.print(request.getAttribute("errorMessage"));
 			}
 		%>
-		<h2 class="headline">ご注文ありがとうございました。</h2>
+		</p>
+
+		<h3>ご注文ありがとうございました。</h3>
 		<a href="index.jsp ">
 			<button type="button" class="button">TOPへ</button>
 		</a>
 	</div>
+	<div class="copyright ">Copyright © 2022 Intecs Co., Ltd. All
+			righys reserved.</div>
 </body>
 </html>

@@ -19,6 +19,14 @@
 	</header>
 		<h2 class="headline">新規会員登録</h2>
 
+		<p id="err_chk" style=" color: red;">
+		<%
+			if (request.getAttribute("errorMessage") != "") {
+				out.print(request.getAttribute("errorMessage"));
+			}
+		%>
+		</p>
+
 		<hr>
 		<div class="txt">
 			<form action="signupConfirm.jsp" method="post" oninput="enableSubmit('signUpForm','salmon')" id="signUpForm">
@@ -118,5 +126,7 @@
 		}
 	</script>
 
+<div class="copyright ">Copyright © 2022 Intecs Co., Ltd. All
+			righys reserved.</div>
 </body>
 </html>

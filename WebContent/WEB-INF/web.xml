@@ -110,18 +110,4 @@
     <url-pattern>/PurchaseServlet</url-pattern>
   </servlet-mapping>
 
-  <filter>
-    <display-name>LoginFilter</display-name>
-    <filter-name>LoginFilter</filter-name>
-    <filter-class>filter.LoginFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>LoginFilter</filter-name>
-    <url-pattern>/cart.jsp</url-pattern>
-    <url-pattern>/main.jsp</url-pattern>
-    <url-pattern>/purchase.jsp</url-pattern>
-    <url-pattern>/purchaseComplete.jsp</url-pattern>
-    <url-pattern>/result.jsp</url-pattern>
-    <url-pattern>/signupComplete.jsp</url-pattern>
-  </filter-mapping>
 </web-app>

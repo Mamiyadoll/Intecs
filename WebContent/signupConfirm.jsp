@@ -30,11 +30,13 @@
 
 		<h2 class="headline">登録内容確認</h2>
 
+		<p id="err_chk" style=" color: red;">
 		<%
 			if (request.getAttribute("errorMessage") != "") {
 				out.print(request.getAttribute("errorMessage"));
 			}
 		%>
+		</p>
 
 		<form action="SignUpServlet" method="post">
 
@@ -90,4 +92,6 @@
 	</div>
 	</div>
 	</div>
+	<div class="copyright ">Copyright © 2022 Intecs Co., Ltd. All
+			righys reserved.</div>
 </body>

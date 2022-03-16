@@ -9,17 +9,22 @@
 <link rel="stylesheet" href="files/main.css">
 <script src="js/library.js"></script>
 </head>
-<%@ include file="header.jsp"%>
+
 <body>
 
 	<div class="wrapper">
+
+	<%@ include file="header.jsp"%>
+
 		<h2 class="headline">カート</h2>
 
+		<p id="err_chk" style=" color: red;">
 		<%
 			if (request.getAttribute("errorMessage") != "") {
 				out.print(request.getAttribute("errorMessage"));
 			}
 		%>
+		</p>
 
 		<hr>
 		<c:forEach items="${cart}" var="u" varStatus="s">
@@ -56,5 +61,7 @@
 			</div>
 		</div>
 	</div>
+<div class="copyright ">Copyright © 2022 Intecs Co., Ltd. All
+			righys reserved.</div>
 </body>
 </html>

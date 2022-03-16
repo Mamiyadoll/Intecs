@@ -101,3 +101,10 @@ a:active {
 	color: rgba(0, 0, 102, 0.92);
 	text-decoration: none;
 }
+
+.copyright {
+	color: darkgray;
+	margin-right: 30px;
+	margin-top: 5px;
+	text-align: center;
+}

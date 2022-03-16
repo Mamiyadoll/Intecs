@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ page import="beans.ProductBean" import="beans.UserBean"
@@ -14,17 +14,21 @@
 
 </head>
 
-<%@include file="header.jsp"%>
 <body>
 
-	    <%
+	<div class="wrapper">
+
+		<%@include file="header.jsp"%>
+
+		<p id="err_chk" style="color: red;">
+			<%
 			if (request.getAttribute("errorMessage") != "") {
 				out.print(request.getAttribute("errorMessage"));
 			}
 		%>
-	<div class="wrapper">
-		検索キーワード:${requestScope.keyword} に一致する商品
-		検索結果：${requestScope.number}件
+		</p>
+
+		検索キーワード:${requestScope.keyword} に一致する商品 検索結果：${requestScope.number}件
 		<hr>
 
 		<%
@@ -63,5 +67,7 @@
 
 
 	</div>
+	<div class="copyright ">Copyright © 2022 Intecs Co., Ltd. All
+		righys reserved.</div>
 </body>
 </html>
