@@ -14,6 +14,13 @@
 
 	<div class="wrapper">
 		<h2 class="headline">カート</h2>
+
+		<%
+			if (request.getAttribute("errorMessage") != "") {
+				out.print(request.getAttribute("errorMessage"));
+			}
+		%>
+
 		<hr>
 		<c:forEach items="${cart}" var="u" varStatus="s">
 			<div class="purchaseI-mg">

@@ -13,6 +13,11 @@
 <body>
 	<div class="wrapper">
 		<h2 class="headline">購入手続き</h2>
+		<%
+			if (request.getAttribute("errorMessage") != "") {
+				out.print(request.getAttribute("errorMessage"));
+			}
+		%>
 		<hr>
 		<c:forEach items="${cart}" var="u" varStatus="s">
 			<div class="purchaseImg">

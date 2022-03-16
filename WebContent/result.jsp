@@ -16,43 +16,50 @@
 
 <%@include file="header.jsp"%>
 <body>
-	<div class="wrapper">
-	検索結果：${requestScope.number}件
-	<hr>
 
-	<%
+	    <%
+			if (request.getAttribute("errorMessage") != "") {
+				out.print(request.getAttribute("errorMessage"));
+			}
+		%>
+	<div class="wrapper">
+
+		検索結果：${requestScope.number}件
+		<hr>
+
+		<%
 		List<ProductBean> product = (List<ProductBean>) request.getAttribute("product");
 		for (ProductBean item : product) {
 	%>
-	<div class="book-box">
-		<div class="book-img">
-			<img src="${pageContext.request.contextPath}/productImg/${product.isbn}.jpg">
-		</div>
-		<div class="book-text">
-			<div class="book-title">
-				<p class="subtitle" id="subtitle">
-					著作名：
-					<%=item.getProductName()%>
-				<p>
-					著者名：
-					<%=item.getAuthorName()%><br> 価格：税込
-					<%=item.getPrice()%>円
+		<div class="book-box">
+			<div class="book-img">
+				<img
+					src="${pageContext.request.contextPath}/productImg/${product.isbn}.jpg">
 			</div>
+			<div class="book-text">
+				<div class="book-title">
+					<p class="subtitle" id="subtitle">
+						著作名：
+						<%=item.getProductName()%>
+					<p>
+						著者名：
+						<%=item.getAuthorName()%><br> 価格：税込
+						<%=item.getPrice()%>円
+				</div>
 
-			<form action="CartAddServlet" method="post">
-				<input type="hidden" name="isbn" value="<%=item.getIsbn()%>">
-				数量 <select name="number">
-					<option value="1" selected>1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-				</select>
-				<input type="submit" class="button" value="カートに入れる">
-			</form>
+				<form action="CartAddServlet" method="post">
+					<input type="hidden" name="isbn" value="<%=item.getIsbn()%>">
+					数量 <select name="number">
+						<option value="1" selected>1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select> <input type="submit" class="button" value="カートに入れる">
+				</form>
+			</div>
 		</div>
-	</div>
-	<hr>
+		<hr>
 
 
 	</div>

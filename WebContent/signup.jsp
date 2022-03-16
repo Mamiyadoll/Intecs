@@ -18,6 +18,7 @@
 		</div>
 	</header>
 		<h2 class="headline">新規会員登録</h2>
+
 		<hr>
 		<div class="txt">
 			<form action="signupConfirm.jsp" method="post" oninput="enableSubmit('signUpForm','salmon')" id="signUpForm">
