@@ -5,9 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>登録内容確認 | Intecs オンラインストア</title>
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="files/main.css">
 </head>
-<%@ include file="header.jsp"%>
 <body>
 	<div class="wrapper">
 		<header>
@@ -36,50 +35,44 @@
 				<%
 					out.println(loginId);
 				%>
-				<input type="hidden" name="loginId" value="<%=loginId%>>">
+				<input type="hidden" name="loginId" value="<%=loginId%>">
 			</p>
-			<h3>password</h3>
-			<p>
-				<%
-					out.println(pass);
-				%>
-				<input type="hidden" name="password" value="<%=pass%>>">
-			</p>
+				<input type="hidden" name="password" value="<%=pass%>">
+
 			<h3>氏名</h3>
-			]
 			<p>
 				<%
 					out.println(userName);
 				%>
-				<input type="hidden" name="userName" value="<%=userName%>>">
+				<input type="hidden" name="userName" value="<%=userName%>">
 			</p>
 			<h3>郵便番号</h3>
 			<p>
 				<%
 					out.println(postCode);
 				%>
-				<input type="hidden" name="postCode" value="<%=postCode%>>">
+				<input type="hidden" name="postCode" value="<%=postCode%>">
 			</p>
 			<h3>住所</h3>
 			<p>
 				<%
 					out.println(address);
 				%>
-				<input type="hidden" name="address" value="<%=address%>>">
+				<input type="hidden" name="address" value="<%=address%>">
 			</p>
 			<h3>電話番号</h3>
 			<p>
 				<%
 					out.println(tel);
 				%>
-				<input type="hidden" name="tel" value="<%=tel%>>">
+				<input type="hidden" name="tel" value="<%=tel%>">
 			</p>
 			<h3>メールアドレス</h3>
 			<p>
 				<%
 					out.println(mail);
 				%>
-				<input type="hidden" name="mail" value="<%=mail%>>">
+				<input type="hidden" name="mail" value="<%=mail%>">
 			</p>
 
 			<input type="submit" name="signup" value="登録" class="button">
