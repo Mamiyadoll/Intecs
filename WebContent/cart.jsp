@@ -7,13 +7,20 @@
 <meta charset="UTF-8">
 <title>カート | Intecs オンラインストア</title>
 <link rel="stylesheet" href="files/main.css">
-<script src="${pageContext.request.contextPath}/js/library.js"></script>
+<script src="js/library.js"></script>
 </head>
 <%@ include file="header.jsp"%>
 <body>
 
 	<div class="wrapper">
 		<h2 class="headline">カート</h2>
+
+		<%
+			if (request.getAttribute("errorMessage") != "") {
+				out.print(request.getAttribute("errorMessage"));
+			}
+		%>
+
 		<hr>
 		<c:forEach items="${cart}" var="u" varStatus="s">
 			<div class="purchaseI-mg">
