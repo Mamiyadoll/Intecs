@@ -11,6 +11,13 @@
 <body>
 
 	<div class="wrapper">
+
+		<%
+			if (request.getAttribute("errorMessage") != "") {
+				out.print(request.getAttribute("errorMessage"));
+			}
+		%>
+
 		<h2 class="headline">
 			新規登録が完了しました。 <br>引き続きお買い物をお楽しみください
 		</h2>

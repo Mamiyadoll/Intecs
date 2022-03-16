@@ -20,7 +20,7 @@
 		<h2 class="headline">会員ログイン</h2>
 
 		<%
-			if (request.getAttribute("errorMessage") != null) {
+			if (request.getAttribute("errorMessage") != "") {
 				out.print(request.getAttribute("errorMessage"));
 			}
 		%>

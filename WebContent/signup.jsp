@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>新規会員登録 | Intecs オンラインストア</title>
+<script src="${pageContext.request.contextPath}/js/library.js"></script>
 <link rel="stylesheet" href="files/main.css">
 </head>
 <body>
@@ -17,9 +18,10 @@
 		</div>
 	</header>
 		<h2 class="headline">新規会員登録</h2>
+
 		<hr>
 		<div class="txt">
-			<form action="signupConfirm.jsp" method="post">
+			<form action="signupConfirm.jsp" method="post" oninput="enableSubmit('signUpForm','salmon')" id="signUpForm">
 				<h3>ユーザ名(英数字)</h3>
 				<input type="text" name="loginId" id="loginId" maxlength="50"
 					placeholder="半角英数8文字以上">
@@ -44,7 +46,7 @@
 				<input type="email" name="mail" id="mail" maxlength="254"
 					placeholder="aaaa@gmail.com">
 				<p id="mail_chk" style="display: none; color: red;">メールアドレスが形式に沿っていません</p>
-				<input type="submit" value="会員登録" disabled onclick=" return check()"
+				<br><input type="submit" value="会員登録" disabled onclick=" return check()"
 					class="button">
 			</form>
 		</div>

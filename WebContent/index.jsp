@@ -11,6 +11,11 @@
 <!-- ここからBODY -->
 
 <body>
+	<%
+		if (request.getAttribute("errorMessage") != "") {
+			out.print(request.getAttribute("errorMessage"));
+		}
+	%>
 
 	<main> <img src="img/img_mens_illustration@2x.png" width="20%"
 		height="20%">
