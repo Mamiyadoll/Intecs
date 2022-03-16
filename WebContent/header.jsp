@@ -4,33 +4,31 @@
 <html lang="ja">
 
 <head>
-<title></title>
-<meta http-equiv="Content-Type" content="tex/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="./files/style.css">
-<link rel="stylesheet" href="files/main.css">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="files/header.css">
 </head>
-<br>
-<br>
+
 <body>
-	<header class="scroll-header">
-		<div class="header__inner">
-			<h1>
-				<a href="main.jsp"><img src="img/logo.svg" alt="株式会社インテックス "></a>
-			</h1>
-			<div class="header__nav-toggle ">
-				<div>
-					<span></span><span></span><span></span>
-				</div>
-			</div>
-			<nav class="header__nav ">
-				<ul class="header-nav__list ">
-					<li><a href="CartServlet" class=" ">カートを見る</a></li>
-					<li><a href="LogoutServlet" class=" ">ログアウト</a></li>
-				</ul>
-			</nav>
-		</div>
+
+	<header>
+		<h1 class="width">
+			<a href="main.jsp"><img alt="Intecs" src="img/logo.svg"></a>
+		</h1>
+		<div class="nav">
+			<ul>
+				<li>
+					<div class="cart">
+						<a href="CartServlet"><img src="img/cart.svg"></a>
+					</div>
+				</li>
+				<li>
+					<div class="logout">
+						<a href="LogoutServlet"><img src="img/logout.svg"></a>
+					</div>
+				</li>
+			</ul>
+		</nav>
 	</header>
+
 </body>
 
 </html>
