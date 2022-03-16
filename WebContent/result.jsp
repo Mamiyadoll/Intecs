@@ -23,7 +23,7 @@
 			}
 		%>
 	<div class="wrapper">
-
+		検索キーワード:${requestScope.keyword} に一致する商品
 		検索結果：${requestScope.number}件
 		<hr>
 
