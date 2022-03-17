@@ -19,104 +19,86 @@
 	</header>
 		<h2 class="headline">新規会員登録</h2>
 
-		<hr>
-		<div class="txt">
-			<form action="signupConfirm.jsp" method="post" oninput="enableSubmit('signUpForm','salmon')" id="signUpForm">
-				<h3>ユーザ名(英数字)</h3>
-				<input type="text" name="loginId" id="loginId" maxlength="50"
-					placeholder="半角英数8文字以上">
-				<h3>Password</h3>
-				<input type="password" name="password1" id="password1"
-					maxlength="50" placeholder="半角英数8文字以上">
-				<p id="pass_chk" style="display: none; color: red;">パスワードが半角英数8文字以上になっていません</p>
-				<h3>氏名</h3>
-				<input type="text" name="userName" id="userName" maxlength="100"
-					placeholder="山田太郎">
-				<h3>郵便番号</h3>
-				<input type="text" name="postCode" id="postCode" maxlength="7"
-					placeholder="ハイフンなし">
-				<p id="yuubin_chk" style="display: none; color: red;">郵便番号が数字7桁になっていません</p>
-				<h3>住所</h3>
-				<input type="text" name="address" id="address" maxlength="200">
-				<h3>電話番号</h3>
-				<input type="text" name="tel" id="tel" maxlength="20"
-					placeholder="ハイフンなし">
-				<p id="phone_chk" style="display: none; color: red;">電話番号が形式に沿っていません</p>
-				<h3>メールアドレス</h3>
-				<input type="email" name="mail" id="mail" maxlength="254"
-					placeholder="aaaa@gmail.com">
-				<p id="mail_chk" style="display: none; color: red;">メールアドレスが形式に沿っていません</p>
-				<br><input type="submit" value="会員登録" disabled onclick=" return check()"
-					class="button">
-			</form>
-		</div>
-	</div>
-	<script>
-		function check() {
-			const loginId = document.getElementById("loginId").value;
-			const userName = document.getElementById("userName").value;
-			const postCode = document.getElementById("postCode").value;
-			const address = document.getElementById("address").value;
-			const tel = document.getElementById("tel").value;
-			const mail = document.getElementById("mail").value;
-			const password1 = document.getElementById("password1").value;
-
-			// エラーフラグ
-			var flag_chk = 0;
-
-			// IDチェック
-			var regexp = /^([a-zA-Z0-9]{8,})$/;
-			if (regexp.test(loginId) != true) {
-				document.getElementById('id_chk').style.display = "block";
-				flag_chk = 1;
-			} else {
-				document.getElementById('id_chk').style.display = "none";
+		<p id="err_chk" style=" color: red;">
+		<%
+			if (request.getAttribute("errorMessage") != "") {
+				out.print(request.getAttribute("errorMessage"));
 			}
+		%>
+		</p>
 
-			// 郵便番号チェック
-			var regexp = /^\d{7}$/;
-			if (regexp.test(postCode) != true) {
-				document.getElementById('yuubin_chk').style.display = "block";
-				flag_chk = 1;
-			} else {
-				document.getElementById('yuubin_chk').style.display = "none";
-			}
+			<div class="txt">
+	<form action="signupConfirm.jsp" method="post" oninput="enableSubmit('signUpForm','lightblue')" id="signUpForm">
 
-			// 電話番号チェック
-			var regexp = /^(0{1}\d{9,10})$/;
-			if (regexp.test(tel) != true) {
-				document.getElementById('phone_chk').style.display = "block";
-				flag_chk = 1;
-			} else {
-				document.getElementById('phone_chk').style.display = "none";
-			}
+		<h3>ログインID</h3><p><input type="text" name="loginId" id="loginId" maxlength="50" placeholder="半角英数8文字以上">
+                </p>
+                <p id="id_chk" style="display: none; color: red;">IDが半角英数8文字以上になっていません</p>
+                 <h3>Password</h3><p><input type="text" name="password" id="password" maxlength="50" placeholder="半角英数8文字以上"></p>
+                <p id="pass_chk" style="display: none; color: red;">パスワードが半角英数8文字以上になっていません</p>
+                <h3>氏名</h3><p><input type="text" name="userName" id="userName" maxlength="50" placeholder="山田太郎"></p>
+                <h3>郵便番号</h3><p><input type="text" name="postCode" id="postCode" maxlength="7" placeholder="ハイフンなし"></p>
+                <p id="yuubin_chk" style="display: none; color: red;">郵便番号が数字7桁になっていません</p>
+                <h3>住所</h3><p><input type="text" name="address" id="address" maxlength="200"></p>
+                <h3>電話番号</h3><p><input type="text" name="tel" id="tel" maxlength="20" placeholder="ハイフンなし"></p>
+                <p id="phone_chk" style="display: none; color: red;">電話番号が形式に沿っていません</p>
+                <h3>メールアドレス</h3><p><input type="email" name="mail" id="mail" maxlength="254" placeholder="aaaa@gmail.com"></p>
+                <p id="mail_chk" style="display: none; color: red;">メールアドレスが形式に沿っていません</p>
+		<input type="submit" value="確認" disabled onclick=" return check()" class="button">
+		<a href="index.jsp">
+            <button type="button" class="button">戻る</button>
+        </a>
+  	</form>
+  	  	</div>
+  	</div>
+    <script>
+        function check() {
+            const loginId = document.getElementById("loginId").value;
+            const userName = document.getElementById("userName").value;
+            const postCode = document.getElementById("postCode").value;
+            const address = document.getElementById("address").value;
+            const tel = document.getElementById("tel").value;
+            const mail = document.getElementById("mail").value;
+            const password = document.getElementById("password").value;
 
-			// メールアドレスチェック
-			var regexp = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
-			if (regexp.test(mail) != true) {
-				document.getElementById('mail_chk').style.display = "block";
-				flag_chk = 1;
-			} else {
-				document.getElementById('mail_chk').style.display = "none";
-			}
+            // エラーフラグ
+            var flag_chk = 0;
 
-			// パスワードチェック
-			var regexp = /^([a-zA-Z0-9]{8,})$/;
-			if (regexp.test(password1) != true) {
-				document.getElementById('pass_chk').style.display = "block";
-				flag_chk = 1;
-			} else {
-				document.getElementById('pass_chk').style.display = "none";
-			}
+            // IDチェック
+            var regexp = /^([a-zA-Z0-9]{8,})$/;
+            if (regexp.test(loginId) != true) { document.getElementById('id_chk').style.display = "block"; flag_chk = 1; }
+            else { document.getElementById('id_chk').style.display = "none"; }
 
-			//エラーフラグ判定
-			if (flag_chk == 1) {
-				return false;
-			} else {
-				return true;
-			}
-		}
-	</script>
+            // 郵便番号チェック
+            var regexp = /^\d{7}$/;
+            if (regexp.test(postCode) != true) { document.getElementById('yuubin_chk').style.display = "block"; flag_chk = 1; }
+            else { document.getElementById('yuubin_chk').style.display = "none"; }
+
+            // 電話番号チェック
+            var regexp = /^(0{1}\d{9,10})$/;
+            if (regexp.test(tel) != true) { document.getElementById('phone_chk').style.display = "block"; flag_chk = 1; }
+            else { document.getElementById('phone_chk').style.display = "none"; }
+
+            // メールアドレスチェック
+            var regexp = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
+            if (regexp.test(mail) != true) { document.getElementById('mail_chk').style.display = "block"; flag_chk = 1; }
+            else { document.getElementById('mail_chk').style.display = "none"; }
+
+            // パスワードチェック
+            var regexp = /^([a-zA-Z0-9]{8,})$/;
+            if (regexp.test(password) != true) { document.getElementById('pass_chk').style.display = "block"; flag_chk = 1; }
+            else { document.getElementById('pass_chk').style.display = "none"; }
+
+            //エラーフラグ判定
+            if (flag_chk == 1) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+    </script>
+    <div class="copyright ">Copyright © 2022 Intecs Co., Ltd. All
+			rights reserved.</div>
 
 </body>
 </html>

@@ -1,43 +1,41 @@
 @charset "UTF-8";
 
 html {
-    font-family:  "ヒラギノ角ゴ ProN W3", HiraKakuProN-W3, 游ゴシック, "Yu Gothic", メイリオ, Meiryo, Verdana, Helvetica, Arial, sans-serif;
-    background-color: black;
-}
-
-* {
-    margin: 0 0 0 0;
+	font-family: "ヒラギノ角ゴ ProN W3", HiraKakuProN-W3, 游ゴシック, "Yu Gothic", メイリオ,
+		Meiryo, Verdana, Helvetica, Arial, sans-serif;
+	background-color: black;
 }
 
 html * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-    margin: 0 0 0 0;
-    background-color: black;
-    position: relative;
+	margin: 0 0 0 0;
+	background-color: black;
+	position: relative;
 }
 
-.scroll-header{
+.scroll-header {
 	margin-bottom: 50px;
+}
 
-	}
-
-.wrapper{
+.wrapper {
 	text-align: center;
 	padding-top: 20px;
-    margin: 20px auto 10px auto;
-    background-color: white;
-    border-radius: 18px;
-    max-width: 95%;
+	margin: 20px auto 10px auto;
+	background-color: white;
+	border-radius: 18px;
+	max-width: 95%;
+	padding-bottom: 30px;
 }
 
 /* 見出し */
-.headline{
-    font-size: 32px;
+.headline {
+	font-size: 32px;
 	margin-top: 20px;
-	font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro','メイリオ', 'Meiryo', '游ゴシック', 'Yu Gothic', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+	font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ',
+		'Meiryo', '游ゴシック', 'Yu Gothic', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 }
 
 p {
@@ -47,37 +45,58 @@ p {
 	font-weight: bolder;
 }
 
-.button-position{
-    display: flex;
-    align-items: center;
-
+.button-position {
+	display: flex;
+	align-items: center;
 }
 
-.button-center{
-    display: flex;
+.button-center {
+	display: flex;
 	margin: 0 auto;
 }
 
-.button{
+.button {
 	width: 145px;
-    margin: 20px 0 20px 27px;
-    display: inline-block;
-    border-radius: 20px;
-    font-size: 15px;
-    text-align: center;
-    cursor: pointer;
-    padding: 10px 35px;
-    background: rgba(0, 0, 102, 0.92);
-    color: white;
-    line-height: 1em;
-    transition: .3s;
-    border: 2px solid rgba(0, 0, 102, 0.92);
-    text-decoration: none;
+	margin: 20px 0 20px 27px;
+	display: inline-block;
+	border-radius: 20px;
+	font-size: 15px;
+	text-align: center;
+	cursor: pointer;
+	padding: 10px 3px;
+	background: rgba(0, 0, 102, 0.92);
+	color: white;
+	line-height: 1em;
+	transition: .3s;
+	border: 2px solid rgba(0, 0, 102, 0.92);
+	text-decoration: none;
 }
 
-.button:hover{
-    color: rgba(0, 0, 102, 0.92);
-    background: white;
+.login {
+	width: 145px;
+	margin: 20px 0 10px 0;
+	display: inline-block;
+	border-radius: 20px;
+	font-size: 15px;
+	text-align: center;
+	cursor: pointer;
+	padding: 10px 3px;
+	background: rgba(0, 0, 102, 0.92);
+	color: white;
+	line-height: 1em;
+	transition: .3s;
+	border: 2px solid rgba(0, 0, 102, 0.92);
+	text-decoration: none;
+}
+
+.login:hover {
+	color: rgba(0, 0, 102, 0.92);
+	background: white;
+}
+
+.button:hover {
+	color: rgba(0, 0, 102, 0.92);
+	background: white;
 }
 
 a:link {
@@ -100,4 +119,11 @@ a:hover {
 a:active {
 	color: rgba(0, 0, 102, 0.92);
 	text-decoration: none;
+}
+
+.copyright {
+	color: darkgray;
+	margin-right: 30px;
+	margin-top: 5px;
+	text-align: center;
 }

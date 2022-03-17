@@ -19,11 +19,13 @@
 	</header>
 		<h2 class="headline">会員ログイン</h2>
 
+		<p id="err_chk" style=" color: red;">
 		<%
 			if (request.getAttribute("errorMessage") != "") {
 				out.print(request.getAttribute("errorMessage"));
 			}
 		%>
+		</p>
 
 		<form action="LoginServlet" method="post">
 			<input type="text" name="loginId" placeholder="ログインID"><br>
@@ -32,8 +34,11 @@
 		</form>
 		<button onclick="location.href='signup.jsp'" class="button">新規登録</button>
 
-		<%@ include file="footer.jsp"%>
 	</div>
+
+	<div class="copyright ">Copyright © 2022 Intecs Co., Ltd. All
+			righys reserved.</div>
+
 </body>
 
 

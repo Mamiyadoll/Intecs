@@ -11,7 +11,7 @@
 
 	<header>
 		<h1 class="width">
-			<a href="main.jsp"><img alt="Intecs" src="img/logo.svg"></a>
+			<a href="MainServlet"><img alt="Intecs" src="img/logo.svg"></a>
 		</h1>
 		<div class="nav">
 			<ul>
@@ -26,7 +26,7 @@
 					</div>
 				</li>
 			</ul>
-		</nav>
+		</div>
 	</header>
 
 </body>

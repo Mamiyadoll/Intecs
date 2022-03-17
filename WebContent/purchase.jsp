@@ -9,15 +9,20 @@
 <link rel="stylesheet" href="css/main.css">
 <script src="${pageContext.request.contextPath}/js/library.js"></script>
 </head>
-<%@ include file="header.jsp"%>
+
 <body>
 	<div class="wrapper">
+		<%@ include file="header.jsp"%>
 		<h2 class="headline">購入手続き</h2>
-		<%
-			if (request.getAttribute("errorMessage") != "") {
-				out.print(request.getAttribute("errorMessage"));
-			}
-		%>
+
+		<p id="err_chk" style="color: red;">
+			<%
+				if (request.getAttribute("errorMessage") != "") {
+					out.print(request.getAttribute("errorMessage"));
+				}
+			%>
+		</p>
+
 		<hr>
 		<c:forEach items="${cart}" var="u" varStatus="s">
 			<div class="purchaseImg">
@@ -43,12 +48,18 @@
 		<div class="address">
 			<p>${user.address}</p>
 		</div>
+		<div class="button-position">
+			<div class="button-center">
 		<form action="PurchaseServlet" method="post">
-			<input type="submit" name="purchase" value="購入を確定する" class="button">
+			<input type="submit" name="purchase" value="購入を確定" class="button">
 		</form>
 		<form action="CartServlet" method="post">
 			<input type="submit" name="cartBack" value="戻る" class="button">
 		</form>
+		</div>
+		</div>
 	</div>
+	<div class="copyright ">Copyright © 2022 Intecs Co., Ltd. All
+		rights reserved.</div>
 </body>
 </html>

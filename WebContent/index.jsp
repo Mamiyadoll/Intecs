@@ -54,7 +54,7 @@
 	<footer>
 
 		<div class="copyright ">Copyright © 2022 Intecs Co., Ltd. All
-			righys reserved.</div>
+			rights reserved.</div>
 
 	</footer>
 </body>

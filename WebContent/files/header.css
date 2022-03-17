@@ -25,7 +25,7 @@ h1 {
 }
 
 
-nav {
+.nav {
 	display: flex;
 	height: 3rem;
 	margin: 0 0 0 auto;

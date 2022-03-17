@@ -15,92 +15,71 @@
 </head>
 
 
-<%@ include file="header.jsp"%>
+
 <!-- BODY -->
 <body>
-	<%
-		if (request.getAttribute("errorMessage") != "") {
-			out.print(request.getAttribute("errorMessage"));
-		}
-	%>
+	<div class="wrapper">
+		<%@ include file="header.jsp"%>
 
-	<div class="search">
-		<form action="SearchServlet" method="get">
-			<input type="text" name="keyword" style="width: 50%; height: 30px;"
-				placeholder="書籍名、キーワード"> <input type="submit" value="検索">
-		</form>
-	</div>
+		<p id="err_chk" style="color: red;">
+			<%
+				if (request.getAttribute("errorMessage") != "") {
+					out.print(request.getAttribute("errorMessage"));
+				}
+			%>
+		</p>
 
-	<!-- おすすめ一覧 -->
-	<div class="newbooks">
+		<div class="search">
+			<form action="SearchServlet" method="get">
+				<input type="text" name="keyword" style="width: 50%; height: 30px;"
+					placeholder="書籍名、キーワード"> <input type="submit" value="検索">
+			</form>
+		</div>
 
-		<ul class="newbooks-box">
+		<!-- おすすめ一覧 -->
+
+
+				<div class="newbooks">
+
+			<ul class="newbooks-box">
+
+
 			<li>
-				<p id="book-title">
-					<img
-						src="${pageContext.request.contextPath}/productImg/${product[0].isbn}.jpg">
-				</p>
-				<p id="book-title">${product[0].productName}</p>
-				<br>
-				<p>${product[0].authorName}</p>
-				<form action="CartAddServlet" method="post">
-					<input type="hidden" name="isbn" value="${product[0].isbn}">
-					数量 <select name="number">
-						<option value="1" selected>1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-					</select> <input type="submit" class="button" value="カートに入れる">
-				</form>
-			</li>
-			<li>
-				<p id="book-title">
-					<img
-						src="${pageContext.request.contextPath}/productImg/${product[1].isbn}.jpg">
-				</p>
+					<p id="book-title">
 
-				<p id="book-title">${product[1].productName}</p>
-				<br>
-				<p>${product[1].authorName}</p>
 
-				<form action="CartAddServlet" method="post">
-					<input type="hidden" name="isbn" value="${produc[1].isbn}">
-					数量 <select name="number">
-						<option value="1" selected>1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-					</select> <input type="submit" class="button" value="カートに入れる">
+		<%
+			List<ProductBean> product = (List<ProductBean>) request.getAttribute("product");
+			for (ProductBean item : product) {
+		%>
+						<img
+							src="${pageContext.request.contextPath}/productImg/${product.isbn}.jpg">
+					</p>
 
-				</form>
-			</li>
-			<li>
-				<p id="book-title">
-					<img
-						src="${pageContext.request.contextPath}/productImg/${product[2].isbn}.jpg">
-				</p>
-				<p id="book-title">${product[2].productName}</p>
-				<br>
-				<p>${product[2].authorName}</p>
-				<form action="CartAddServlet" method="post">
-					<input type="hidden" name="isbn" value="${product[2].isbn}">
-					数量 <select name="number">
-						<option value="1" selected>1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-					</select> <input type="submit" class="button" value="カートに入れる">
+					<p id="book-title"><%=item.getProductName() %></p> <br>
+					<p><%=item.getAuthorName() %></p><br>
+					<p><%=item.getPrice() %>円</p>
 
-				</form>
-			</li>
-		</ul>
-	</div>
+						<form action="CartAddServlet" method="post">
+						<input type="hidden" name="isbn" value="<%=item.getIsbn()%>">
+						数量 <select name="number">
+							<option value="1" selected>1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select> <input type="submit" class="button" value="カートに入れる">
+
+					</form>
+				</li>
+			</ul>
+		</div>
+		<%
+			}
+		%>
+
 	<!-- ユーザレコメンド ここまで -->
-
-
-
+	<div class="copyright ">Copyright © 2022 Intecs Co., Ltd. All
+		rights reserved.</div>
 </body>
 </html>
