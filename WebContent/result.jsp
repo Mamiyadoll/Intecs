@@ -14,27 +14,37 @@
 
 </head>
 
-<%@include file="header.jsp"%>
 <body>
 
-	    <%
-			if (request.getAttribute("errorMessage") != "") {
-				out.print(request.getAttribute("errorMessage"));
-			}
-		%>
 	<div class="wrapper">
-		検索キーワード:${requestScope.keyword} に一致する商品
-		検索結果：${requestScope.number}件
-		<hr>
+
+		<%@include file="header.jsp"%>
+		<div class="search">
+			<form action="SearchServlet" method="get">
+				<input type="text" name="keyword" style="width: 50%; height: 30px;"
+					placeholder="書籍名、キーワード"> <input type="submit" value="検索">
+			</form>
+		</div>
+		<p id="err_chk" style="color: red;">
+			<%
+				if (request.getAttribute("errorMessage") != "") {
+					out.print(request.getAttribute("errorMessage"));
+				}
+			%>
+		</p>
+
+		<p>検索キーワード:${requestScope.keyword} に一致する商品
+			検索結果：${requestScope.number}件</p>
+
 
 		<%
-		List<ProductBean> product = (List<ProductBean>) request.getAttribute("product");
-		for (ProductBean item : product) {
-	%>
+			List<ProductBean> product = (List<ProductBean>) request.getAttribute("product");
+			for (ProductBean item : product) {
+		%>
 		<div class="book-box">
 			<div class="book-img">
 				<img
-					src="${pageContext.request.contextPath}/productImg/${item.isbn}.jpg">
+					src="${pageContext.request.contextPath}/productImg/<%=item.getIsbn()%>.jpg">
 			</div>
 			<div class="book-text">
 				<div class="book-title">
@@ -60,9 +70,14 @@
 			</div>
 		</div>
 		<hr>
-		<% } %>
+		<%
+			}
+		%>
+
 
 
 	</div>
+	<div class="copyright ">Copyright © 2022 Intecs Co., Ltd. All
+		rights reserved.</div>
 </body>
 </html>
