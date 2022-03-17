@@ -45,7 +45,7 @@
 				<p>${product[0].authorName}</p>
 				<form action="CartAddServlet" method="post">
 					<input type="hidden" name="isbn" value="${product[0].isbn}">
-					数量 <select name="number">
+					数量 <select name="count">
 						<option value="1" selected>1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -66,7 +66,7 @@
 
 				<form action="CartAddServlet" method="post">
 					<input type="hidden" name="isbn" value="${produc[1].isbn}">
-					数量 <select name="number">
+					数量 <select name="count">
 						<option value="1" selected>1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -86,7 +86,7 @@
 				<p>${product[2].authorName}</p>
 				<form action="CartAddServlet" method="post">
 					<input type="hidden" name="isbn" value="${product[2].isbn}">
-					数量 <select name="number">
+					数量 <select name="count">
 						<option value="1" selected>1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
