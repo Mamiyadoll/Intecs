@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ page import="beans.ProductBean" import="beans.UserBean"
@@ -34,7 +34,7 @@
 		<div class="book-box">
 			<div class="book-img">
 				<img
-					src="${pageContext.request.contextPath}/productImg/${product.isbn}.jpg">
+					src="${pageContext.request.contextPath}/productImg/${item.isbn}.jpg">
 			</div>
 			<div class="book-text">
 				<div class="book-title">
@@ -49,7 +49,7 @@
 
 				<form action="CartAddServlet" method="post">
 					<input type="hidden" name="isbn" value="<%=item.getIsbn()%>">
-					数量 <select name="number">
+					数量 <select name="count">
 						<option value="1" selected>1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -60,6 +60,7 @@
 			</div>
 		</div>
 		<hr>
+		<% } %>
 
 
 	</div>

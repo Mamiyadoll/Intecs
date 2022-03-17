@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 //		遷移先URL格納用の変数の宣言
 		String url ;
 //		エラーメッセージ格納用の変数の宣言
-		String errorMessage;
+		String errorMessage = "";
 
 //		リクエスト変数のログインID、パスワードを使ってログイン処理
 //		ログインできた場合、セッション変数に、そのログインIDのUserBeanのインスタンスを格納
@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet {
 
 		}else {
 //			それ以外のエラー
-			errorMessage = "予期せぬエラーが発生しました。。";
+			errorMessage = "予期せぬエラーが発生しました。";
 			request.setAttribute("errorMessage", errorMessage);
 			url = "login.jsp";
 		}

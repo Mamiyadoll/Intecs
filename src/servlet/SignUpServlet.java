@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.UserBean;
 import dao.DAO;
 
 /**
@@ -31,36 +30,34 @@ public class SignUpServlet extends HttpServlet {
 //		遷移先URL格納用変数の宣言
 		String url ="";
 //		エラーメッセージ格納用変数を宣言
-		String errorMessage;
+		String errorMessage = "";
 
 //		リクエスト変数をもとにサインアップ処理
 //		signupメソッドの戻り値をもとに処理を分ける
 		if(DAO.signup(
-				(String)request.getAttribute("loginId"),
-				(String)request.getAttribute("password"),
-				(String)request.getAttribute("userName"),
-				(String)request.getAttribute("postCode"),
-				(String)request.getAttribute("address"),
-				(String)request.getAttribute("tel"),
-				(String)request.getAttribute("mail")
+				(String)request.getParameter("loginId"),
+				(String)request.getParameter("password"),
+				(String)request.getParameter("userName"),
+				(String)request.getParameter("postCode"),
+				(String)request.getParameter("address"),
+				(String)request.getParameter("tel"),
+				(String)request.getParameter("mail")
 				) == 0) {
 //			サインアップ成功した場合
 //			セッション生成
 			HttpSession session = request.getSession();
-//			セッション変数から、ユーザIDを取得
-			UserBean user = (UserBean)session.getAttribute("user");
 //			UserBeanインスタンスを生成し、セッション変数に格納
-			session.setAttribute("user",DAO.createUserBeanInstance(user.getloginId()));
+			session.setAttribute("user",DAO.createUserBeanInstance(request.getParameter("loginId")));
 			url = "signupComplete.jsp";
 
 		}else if((DAO.signup(
-				(String)request.getAttribute("loginId"),
-				(String)request.getAttribute("password"),
-				(String)request.getAttribute("userName"),
-				(String)request.getAttribute("postCode"),
-				(String)request.getAttribute("address"),
-				(String)request.getAttribute("tel"),
-				(String)request.getAttribute("mail")
+				(String)request.getParameter("loginId"),
+				(String)request.getParameter("password"),
+				(String)request.getParameter("userName"),
+				(String)request.getParameter("postCode"),
+				(String)request.getParameter("address"),
+				(String)request.getParameter("tel"),
+				(String)request.getParameter("mail")
 				) == 1)) {
 //			同一ログインIDが既に存在していた場合
 			errorMessage = "このログインIDは既に使われています。";
@@ -74,7 +71,9 @@ public class SignUpServlet extends HttpServlet {
 			url = "signup.jsp";
 		}
 
+
 //		ページ遷移
+		System.out.println(errorMessage);
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}

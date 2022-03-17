@@ -26,7 +26,7 @@
 				<input type="text" name="loginId" id="loginId" maxlength="50"
 					placeholder="半角英数8文字以上">
 				<h3>Password</h3>
-				<input type="password" name="password1" id="password1"
+				<input type="password" name="password" id="password1"
 					maxlength="50" placeholder="半角英数8文字以上">
 				<p id="pass_chk" style="display: none; color: red;">パスワードが半角英数8文字以上になっていません</p>
 				<h3>氏名</h3>
